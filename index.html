@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Registro de Hidratación</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="tabs">
+      <div class="tab-header active" onclick="showTab('registro', this)">Registro</div>
+      <div class="tab-header" onclick="showTab('historial', this)">Historial</div>
+    </div>
+
+    <!-- Sección Registro -->
+    <div id="registro" class="tab active">
+      <form id="registroForm">
+        <label for="ml">Cantidad (ml):</label>
+        <input type="number" id="ml" required min="1" placeholder="Ej: 250" />
+        <div class="action-buttons">
+          <!-- Botones con iconos -->
+          <button type="button" class="btn-agua" onclick="guardarRegistro('agua')">
+            <i class="fas fa-glass-whiskey"></i>
+          </button>
+          <button type="button" class="btn-orina" onclick="guardarRegistro('orina')">
+            <i class="fas fa-toilet"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Sección Historial -->
+    <div id="historial" class="tab">
+      <h3>Historial de registros</h3>
+      <div class="historial-grid">
+        <div class="historial-column">
+          <h4>Agua</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>ML</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaAgua"></tbody>
+          </table>
+        </div>
+        <div class="historial-column">
+          <h4>Orina</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>ML</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaOrina"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Botón para borrar registros con icono -->
+      <button class="delete-button" onclick="confirmarBorrarHistorial()">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal Popup -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <p id="modal-message"></p>
+      <button onclick="closeModal()">Cerrar</button>
+    </div>
+  </div>
+<script src="js/app.js"></script>
+</body>
+</html>
